@@ -12,9 +12,10 @@ const getAll = async () => {
 const findById = async (id) => {
     try {
         const experience = await ExperienceModel.findById(id)
+        if (!experience) throw { status: 404, message: 'experience not found' }
         return { status: 1, experience }
     } catch (error) {
-        throw error
+        throw { status: 500, message: error }
     }
 }
 

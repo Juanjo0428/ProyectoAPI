@@ -1,36 +1,47 @@
 const { getAll, findById, getRanking, insert } = require('./../services/experienceService')
 
-const all = (req, res) => {
-    const response = getAll()
-    res.json(response)
+const all = async (req, res) => {
+    try {
+        const response = await getAll()
+        res.json(response)
+    } catch (error) {
+        res.status(500).send(error)
+    }
 }
 
-const detail = (req, res) => { //experience/detail/6
+const detail = async (req, res) => { //experience/detail/6
     try {
         const id = Number(req.params.id)
-        const response = findById(id)
+        const response = await findById(id)
         res.json(response)
-    } catch (err) {
-        res.status(404).send(err)
+    } catch (error) {
+        res.status(error.status).send(error.message)
     }    
 }
 
-const ranking = (req, res) => {
-    const response = getRanking()
-    res.json(response)
+const ranking = async (req, res) => {
+    try {
+        const response = await getRanking()
+        res.json(response)
+    } catch (error) {
+        res.status(500).send(error)
+    }
 }
 
-const create = (req, res) => {
-    const experienceData = req.body
-    const response = insert(experienceData)
-    res.json(response)
+const create = async (req, res) => {
+    try {
+        const experienceData = req.body
+        const response = await insert(experienceData)
+        res.json(response)
+    } catch (error) {
+        res.status(500).send(error)
+    }
 }
 
 module.exports = {
     all,
     detail,
     ranking,
-    rate,
     create
 }
 
