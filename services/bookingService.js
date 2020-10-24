@@ -1,3 +1,6 @@
+
+// TODO: create, update, removed
+
 const makeRate = async (idExperience, rate, idUser) => {
     try {
         return { status: 1, rate: {} }

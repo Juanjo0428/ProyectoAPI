@@ -1,4 +1,4 @@
-const { getAll, findById, getRanking } = require('./../services/experienceService')
+const { getAll, findById, getRanking, insert } = require('./../services/experienceService')
 
 const all = (req, res) => {
     const response = getAll()
@@ -22,8 +22,8 @@ const ranking = (req, res) => {
 
 const create = (req, res) => {
     const experienceData = req.body
-    // TODO
-    res.json({ message: 'crear experiencia' })
+    const response = insert(experienceData)
+    res.json(response)
 }
 
 module.exports = {
