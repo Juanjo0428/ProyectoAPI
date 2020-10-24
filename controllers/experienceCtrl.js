@@ -11,7 +11,7 @@ const all = async (req, res) => {
 
 const detail = async (req, res) => { //experience/detail/6
     try {
-        const id = Number(req.params.id)
+        const id = req.params.id
         const response = await findById(id)
         res.json(response)
     } catch (error) {
