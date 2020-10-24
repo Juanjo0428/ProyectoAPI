@@ -1,3 +1,4 @@
+const { register, auth } = require('./../services/usersService')
 
 const signup = async (req, res) => {
     try {
@@ -15,7 +16,7 @@ const login = async (req, res) => {
         const response = await auth(email, password)
         res.json(response)
     } catch (error) {
-        res.status(500).send(error)
+        res.status(error.status).send(error.message)
     }
 }
 
