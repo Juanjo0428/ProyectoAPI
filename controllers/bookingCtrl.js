@@ -1,6 +1,7 @@
 
 const create = (req, res) => {
-    res.json({ 'message': 'Booking creado :D' })
+    const user = req.payload
+    res.json({ 'message': 'Booking creado :D', user })
 }
 
 const rate = (req, res) => {
